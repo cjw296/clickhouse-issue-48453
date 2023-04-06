@@ -9,7 +9,6 @@
     2023.04.06 07:22:24.449001 [ 45 ] {} <Information> Application: Ready for connections.
     2023-04-06T07:22:27.485347: Attempting to execute a statement...
     [('INFORMATION_SCHEMA',), ('default',), ('information_schema',), ('sampledb',), ('system',)]
-    (.venv)(master +) tweedledee:clickhouse-issue-48453 chris:
 
     $ python reproducer.py
     2023.04.06 07:22:31.367542 [ 45 ] {} <Information> Application: Ready for connections.

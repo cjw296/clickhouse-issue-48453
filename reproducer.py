@@ -30,17 +30,11 @@ def main(wait_for_startup: float = 0):
     container = client.containers.get(container.id)
     port = int(container.ports[f'9000/tcp'][0]['HostPort'])
 
-    starting = True
-    while starting:
+    while True:
         log = container.logs()
-        index = 0
-        index = log.find(b'<Information> Application: Ready for connections.', index)
-        if index < 0:
-            sleep(0.01)
-        else:
-            starting = False
-            print(log.split(b'\n')[-2].decode())
-
+        if log.count(b'<Information> Application: Ready for connections.') >= 2:
+            break
+        
     client = ClickhouseClient(
         host='127.0.0.1',
         port=port,
